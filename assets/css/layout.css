@@ -34,6 +34,23 @@
   text-transform: uppercase;
 }
 
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 1.4rem;
+  height: 2px;
+  background: #fff;
+  margin: 0.25rem 0;
+}
+
 .main-nav-list {
   list-style: none;
   display: flex;
@@ -41,6 +58,39 @@
   align-items: center;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 1070px) {
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 33vw;
+    min-width: 220px;
+    max-width: 360px;
+    background: var(--cele);
+    padding: 4.5rem 1.5rem 1.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    display: none;
+    z-index: 30;
+    overflow-y: auto;
+  }
+
+  .main-nav--open {
+    display: block;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .nav-item {
@@ -55,6 +105,9 @@
   line-height: 1;
   text-decoration: none;
   color: #fff;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .lang-toggle {
@@ -95,13 +148,20 @@
   cursor: default;
 }
 
+@media (max-width: 1070px) {
+  .lang-toggle {
+    flex-direction: row;
+    gap: 0.4rem;
+  }
+}
+
 .nav-button {
   border: none;
   background: transparent;
   color: #fff;
   font: inherit;
   text-transform: inherit;
-  padding: 0.35rem 0.75rem;
+  padding: 0.5rem;
   cursor: pointer;
   transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
 }

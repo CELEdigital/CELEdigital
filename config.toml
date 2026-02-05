@@ -46,7 +46,44 @@ defaultContentLanguageInSubdir = true
       [[languages.es.menu.main]]
         name = "temas"
         url = "/temas/"
+        identifier = "temas"
         weight = 2
+
+      [[languages.es.menu.main]]
+        name = "Libertad de expresión"
+        url = "/temas/libertad-de-expresion"
+        parent = "temas"
+        weight = 21
+
+      [[languages.es.menu.main]]
+        name = "Derechos Humanos"
+        url = "/temas/derechos-humanos"
+        parent = "temas"
+        weight = 22
+
+      [[languages.es.menu.main]]
+        name = "Gobernanza de Internet"
+        url = "/temas/gobernanza"
+        parent = "temas"
+        weight = 23
+
+      [[languages.es.menu.main]]
+        name = "Amenazas a la LDE"
+        url = "/temas/amenazas"
+        parent = "temas"
+        weight = 24
+
+      [[languages.es.menu.main]]
+        name = "Inteligencia Artificial"
+        url = "/temas/inteligencia-artificial"
+        parent = "temas"
+        weight = 25
+
+      [[languages.es.menu.main]]
+        name = "Privacidad y Vigilancia"
+        url = "/temas/privacidad-y-vigilancia"
+        parent = "temas"
+        weight = 26
 
       [[languages.es.menu.main]]
         name = "investigaciones"
@@ -115,7 +152,44 @@ defaultContentLanguageInSubdir = true
       [[languages.en.menu.main]]
         name = "Topics"
         url = "/topics/"
+        identifier = "topics"
         weight = 2
+
+      [[languages.en.menu.main]]
+        name = "Freedom of Expression in the 21st Century"
+        url = "/topics/freedom-of-expression"
+        parent = "topics"
+        weight = 21
+
+      [[languages.en.menu.main]]
+        name = "Human Rights"
+        url = "/topics/human-rights"
+        parent = "topics"
+        weight = 22
+
+      [[languages.en.menu.main]]
+        name = "Governance"
+        url = "/topics/governance"
+        parent = "topics"
+        weight = 23
+
+      [[languages.en.menu.main]]
+        name = "Threats to Freedom of Expression"
+        url = "/topics/threats"
+        parent = "topics"
+        weight = 24
+
+      [[languages.en.menu.main]]
+        name = "Artificial Intelligence"
+        url = "/topics/artificial-intelligence"
+        parent = "topics"
+        weight = 25
+
+      [[languages.en.menu.main]]
+        name = "Privacy and Surveillance"
+        url = "/topics/privacy-and-surveillance"
+        parent = "topics"
+        weight = 26
 
       [[languages.en.menu.main]]
         name = "Research"

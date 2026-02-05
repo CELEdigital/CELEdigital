@@ -19,37 +19,58 @@
       
     </a>
 
-    <nav class="main-nav" aria-label="Navegación principal">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="sr-only">Menú</span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
       <ul class="main-nav-list">
         
           
-          
+            
             <li class="nav-item nav-item--dropdown">
-              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-acerca">
+              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-acerca-de">
                 Acerca de
               </button>
-              <div class="nav-dropdown" id="nav-acerca" data-nav-menu hidden>
+              <div class="nav-dropdown" id="nav-acerca-de" data-nav-menu hidden>
                 
-                  
-                    <a class="nav-dropdown-link" href="/es/mision/">Nuestra misión</a>
-                  
-                    <a class="nav-dropdown-link" href="/es/equipo/">Equipo</a>
-                  
-                    <a class="nav-dropdown-link" href="/es/contacto/">Contacto</a>
-                  
+                  <a class="nav-dropdown-link" href="/es/mision/">Nuestra misión</a>
+                
+                  <a class="nav-dropdown-link" href="/es/equipo/">Equipo</a>
+                
+                  <a class="nav-dropdown-link" href="/es/contacto/">Contacto</a>
                 
               </div>
             </li>
           
         
           
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/es/temas/">temas</a>
+            
+            <li class="nav-item nav-item--dropdown">
+              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-temas">
+                temas
+              </button>
+              <div class="nav-dropdown" id="nav-temas" data-nav-menu hidden>
+                
+                  <a class="nav-dropdown-link" href="/es/temas/libertad-de-expresion">Libertad de expresión</a>
+                
+                  <a class="nav-dropdown-link" href="/es/temas/derechos-humanos">Derechos Humanos</a>
+                
+                  <a class="nav-dropdown-link" href="/es/temas/gobernanza">Gobernanza de Internet</a>
+                
+                  <a class="nav-dropdown-link" href="/es/temas/amenazas">Amenazas a la LDE</a>
+                
+                  <a class="nav-dropdown-link" href="/es/temas/inteligencia-artificial">Inteligencia Artificial</a>
+                
+                  <a class="nav-dropdown-link" href="/es/temas/privacidad-y-vigilancia">Privacidad y Vigilancia</a>
+                
+              </div>
             </li>
           
         
-          
           
             <li class="nav-item">
               <a class="nav-link" href="/es/investigaciones/">investigaciones</a>
@@ -57,13 +78,11 @@
           
         
           
-          
             <li class="nav-item">
               <a class="nav-link" href="/es/policy/">policy</a>
             </li>
           
         
-          
           
             <li class="nav-item">
               <a class="nav-link" href="/es/observatorio-legislativo/">observatorio legislativo</a>
@@ -71,13 +90,11 @@
           
         
           
-          
             <li class="nav-item">
               <a class="nav-link" href="/es/taller/">taller</a>
             </li>
           
         
-          
           
             <li class="nav-item">
               <a class="nav-link" href="/es/sala-de-prensa/">sala de prensa</a>
@@ -113,38 +130,58 @@
 
 <script>
   (() => {
-    const toggle = document.querySelector('[data-nav-toggle]');
-    const menu = document.querySelector('[data-nav-menu]');
-    if (!toggle || !menu) return;
+    const toggles = document.querySelectorAll('[data-nav-toggle]');
+    const menus = document.querySelectorAll('[data-nav-menu]');
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('#main-nav');
+    if (!toggles.length || !menus.length) return;
 
-    const closeMenu = () => {
-      menu.hidden = true;
-      toggle.setAttribute('aria-expanded', 'false');
+    const closeAllMenus = () => {
+      menus.forEach((menu) => {
+        menu.hidden = true;
+      });
+      toggles.forEach((toggle) => {
+        toggle.setAttribute('aria-expanded', 'false');
+      });
     };
 
-    const openMenu = () => {
+    const openMenu = (toggle) => {
+      const menuId = toggle.getAttribute('aria-controls');
+      const menu = document.getElementById(menuId);
+      if (!menu) return;
+      closeAllMenus();
       menu.hidden = false;
       toggle.setAttribute('aria-expanded', 'true');
     };
 
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeAllMenus();
+        } else {
+          openMenu(toggle);
+        }
+      });
+    });
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      nav?.classList.toggle('main-nav--open', !isOpen);
     });
 
     document.addEventListener('click', (event) => {
-      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        closeMenu();
+      const clickedInsideMenu = Array.from(menus).some((menu) => menu.contains(event.target));
+      const clickedToggle = Array.from(toggles).some((toggle) => toggle.contains(event.target));
+      if (!clickedInsideMenu && !clickedToggle) {
+        closeAllMenus();
       }
     });
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        closeMenu();
+        closeAllMenus();
       }
     });
   })();

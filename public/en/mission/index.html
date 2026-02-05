@@ -19,24 +19,58 @@
       
     </a>
 
-    <nav class="main-nav" aria-label="Navegación principal">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="sr-only">Menú</span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
       <ul class="main-nav-list">
         
           
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/en/about/">About</a>
+            
+            <li class="nav-item nav-item--dropdown">
+              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-about">
+                About
+              </button>
+              <div class="nav-dropdown" id="nav-about" data-nav-menu hidden>
+                
+                  <a class="nav-dropdown-link" href="/en/mission/">Mission</a>
+                
+                  <a class="nav-dropdown-link" href="/en/team/">Team</a>
+                
+                  <a class="nav-dropdown-link" href="/en/contact/">Contact</a>
+                
+              </div>
             </li>
           
         
           
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/en/topics/">Topics</a>
+            
+            <li class="nav-item nav-item--dropdown">
+              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-topics">
+                Topics
+              </button>
+              <div class="nav-dropdown" id="nav-topics" data-nav-menu hidden>
+                
+                  <a class="nav-dropdown-link" href="/en/topics/freedom-of-expression">Freedom of Expression in the 21st Century</a>
+                
+                  <a class="nav-dropdown-link" href="/en/topics/human-rights">Human Rights</a>
+                
+                  <a class="nav-dropdown-link" href="/en/topics/governance">Governance</a>
+                
+                  <a class="nav-dropdown-link" href="/en/topics/threats">Threats to Freedom of Expression</a>
+                
+                  <a class="nav-dropdown-link" href="/en/topics/artificial-intelligence">Artificial Intelligence</a>
+                
+                  <a class="nav-dropdown-link" href="/en/topics/privacy-and-surveillance">Privacy and Surveillance</a>
+                
+              </div>
             </li>
           
         
-          
           
             <li class="nav-item">
               <a class="nav-link" href="/en/research/">Research</a>
@@ -44,13 +78,11 @@
           
         
           
-          
             <li class="nav-item">
               <a class="nav-link" href="/en/policy/">Policy</a>
             </li>
           
         
-          
           
             <li class="nav-item">
               <a class="nav-link" href="/en/legislative-observatory/">Legislative Observatory</a>
@@ -58,13 +90,11 @@
           
         
           
-          
             <li class="nav-item">
               <a class="nav-link" href="/en/workshop/">Workshop</a>
             </li>
           
         
-          
           
             <li class="nav-item">
               <a class="nav-link" href="/en/press-room/">Press Room</a>
@@ -108,38 +138,58 @@
 
 <script>
   (() => {
-    const toggle = document.querySelector('[data-nav-toggle]');
-    const menu = document.querySelector('[data-nav-menu]');
-    if (!toggle || !menu) return;
+    const toggles = document.querySelectorAll('[data-nav-toggle]');
+    const menus = document.querySelectorAll('[data-nav-menu]');
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('#main-nav');
+    if (!toggles.length || !menus.length) return;
 
-    const closeMenu = () => {
-      menu.hidden = true;
-      toggle.setAttribute('aria-expanded', 'false');
+    const closeAllMenus = () => {
+      menus.forEach((menu) => {
+        menu.hidden = true;
+      });
+      toggles.forEach((toggle) => {
+        toggle.setAttribute('aria-expanded', 'false');
+      });
     };
 
-    const openMenu = () => {
+    const openMenu = (toggle) => {
+      const menuId = toggle.getAttribute('aria-controls');
+      const menu = document.getElementById(menuId);
+      if (!menu) return;
+      closeAllMenus();
       menu.hidden = false;
       toggle.setAttribute('aria-expanded', 'true');
     };
 
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeAllMenus();
+        } else {
+          openMenu(toggle);
+        }
+      });
+    });
+
+    navToggle?.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      nav?.classList.toggle('main-nav--open', !isOpen);
     });
 
     document.addEventListener('click', (event) => {
-      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        closeMenu();
+      const clickedInsideMenu = Array.from(menus).some((menu) => menu.contains(event.target));
+      const clickedToggle = Array.from(toggles).some((toggle) => toggle.contains(event.target));
+      if (!clickedInsideMenu && !clickedToggle) {
+        closeAllMenus();
       }
     });
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        closeMenu();
+        closeAllMenus();
       }
     });
   })();
