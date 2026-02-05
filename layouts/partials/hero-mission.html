@@ -1,7 +1,7 @@
 <section class="hero-mission">
   {{ $mission := site.GetPage "mision" }}
   {{ if $mission }}
-    <h4>{{ $mission.Title }}</h4>
+    <h5>{{ $mission.Title }}</h5>
 
     {{ with $mission.Params.description }}
       <p class="mission-description">{{ . }}</p>

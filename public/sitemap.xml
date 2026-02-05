@@ -3,30 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-  </url><url>
-    <loc>http://localhost:1313/acerca-de/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/audiencia-cidh-copy-2/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/audiencia-cidh-copy/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/audiencia-cidh/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/acerca-de/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/acerca-de/contacto/</loc>
   </url><url>
+    <loc>http://localhost:1313/contacto/</loc>
+  </url><url>
     <loc>http://localhost:1313/acerca-de/equipo/</loc>
+  </url><url>
+    <loc>http://localhost:1313/equipo/</loc>
+  </url><url>
+    <loc>http://localhost:1313/mision/</loc>
   </url><url>
     <loc>http://localhost:1313/acerca-de/informes-anuales/</loc>
   </url><url>
     <loc>http://localhost:1313/acerca-de/junta-directiva/</loc>
   </url><url>
-    <loc>http://localhost:1313/mision/</loc>
-  </url><url>
     <loc>http://localhost:1313/acerca-de/mision/</loc>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url>

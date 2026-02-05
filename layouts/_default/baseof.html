@@ -11,12 +11,13 @@
 
   <main class="container">
     {{ if .IsHome }}
-  <section class="hero">
-    {{ partial "hero-featured.html" . }}
-    {{ partial "hero-mission.html" . }}
-  </section>
-{{ end }}
-
+      <section class="hero">
+        {{ partial "hero-featured.html" . }}
+        {{ partial "hero-mission.html" . }}
+      </section>
+    {{ else }}
+      {{ block "main" . }}{{ end }}
+    {{ end }}
   </main>
 
 </body>

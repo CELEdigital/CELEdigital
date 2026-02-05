@@ -2,14 +2,15 @@
 .hero-mission h5 {
   margin-top: 2rem;
   color: var(--cele);
-  margin-bottom: -0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .mission-description {
   margin: 0 0 1rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.6rem;
+  letter-spacing: 0.03em;
 }
 
 .mission-content p {

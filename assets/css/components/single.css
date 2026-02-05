@@ -1,0 +1,105 @@
+.single-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 8.5rem;
+  align-items: start;
+}
+
+.single-meta {
+  margin-bottom: 0.5rem;
+}
+
+.single-kicker {
+  font-size: 0.85rem;
+  font-family: 'Jost';
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.single-title {
+  font-size: clamp(1.8rem, 3.6vw, 2.2rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  color: var(--cele);
+}
+
+.single-dek {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin: 0 0 1.25rem;
+  color: var(--neutral-600);
+}
+
+.single-byline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem 0.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.single-by {
+  color: var(--accent-blue);
+}
+
+.single-date {
+  color: var(--neutral-800);
+}
+
+.single-sidebar {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.newsletter-box {
+  margin-top: 2rem;
+  background: var(--cele);
+  color: #fff;
+  padding: 1.5rem;
+  border-top: 12px solid var(--cele-yellow); /* example */
+
+}
+
+.newsletter-title {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.newsletter-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.newsletter-input {
+  padding: 0.6rem 0.75rem;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.newsletter-button {
+  border: none;
+  background: #fff;
+  color: #e21f2b;
+  font-weight: 700;
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .single-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .single-sidebar {
+    position: static;
+  }
+}

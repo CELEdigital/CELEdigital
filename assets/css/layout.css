@@ -8,6 +8,12 @@
   align-items: center;
 }
 
+.header-container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 .site-logo {
   margin-right: 0;
 }

@@ -20,19 +20,19 @@ languageCode = "en-us"
 
   [[menu.main]]
     name = "Nuestra misión"
-    url = "/acerca-de/mision/"
+    url = "/mision/"
     parent = "acerca-de"
     weight = 11
 
   [[menu.main]]
     name = "Equipo"
-    url = "/acerca-de/equipo/"
+    url = "/equipo/"
     parent = "acerca-de"
     weight = 12
 
   [[menu.main]]
     name = "Contacto"
-    url = "/acerca-de/contacto/"
+    url = "/contacto/"
     parent = "acerca-de"
     weight = 13
 
@@ -56,7 +56,12 @@ languageCode = "en-us"
     url = "/observatorio-legislativo/"
     weight = 5
 
+[[menu.main]]
+    name = "taller"
+    url = "/taller/"
+    weight = 6
+
   [[menu.main]]
     name = "sala de prensa"
     url = "/sala-de-prensa/"
-    weight = 6
+    weight = 7

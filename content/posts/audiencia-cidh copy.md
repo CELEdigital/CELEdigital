@@ -1,7 +1,9 @@
 ---
 title: "Audiencia CIDH sobre libertad de expresión"
+type: posts
 description: "Contribución del CELE a la audiencia sobre libertad de expresión en la Argentina ante la Comisión Interamericana"
 featured: true
+date: 2026-02-04
 author: 
   - Lina Palacios
 image: "/img/sanfrancisco2018.jpeg"
