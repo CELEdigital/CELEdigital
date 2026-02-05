@@ -25,8 +25,10 @@
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
     </button>
+    <div class="nav-overlay" data-nav-overlay hidden></div>
 
     <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <button class="nav-close" type="button" aria-label="Cerrar menú">×</button>
       <ul class="main-nav-list">
         
           
@@ -73,31 +75,36 @@
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/en/research/">Research</a>
+              
+              <a class="nav-link " href="/en/research/">Research</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/en/policy/">Policy</a>
+              
+              <a class="nav-link " href="/en/policy/">Policy</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/en/legislative-observatory/">Legislative Observatory</a>
+              
+              <a class="nav-link nav-link--wrap" href="/en/legislative-observatory/">Legislative Observatory</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/en/workshop/">Workshop</a>
+              
+              <a class="nav-link " href="/en/workshop/">Workshop</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/en/press-room/">Press Room</a>
+              
+              <a class="nav-link nav-link--wrap" href="/en/press-room/">Press Room</a>
             </li>
           
         
@@ -109,12 +116,20 @@
             
               
               
+                
+                
+                  
+                
               
               
-                <a class="lang-toggle-item" href="/es/">ES</a>
+              
+                <a class="lang-toggle-item" href="/es/policy/">ES</a>
               
             
               
+              
+                
+                
               
               
               
@@ -134,6 +149,8 @@
     const menus = document.querySelectorAll('[data-nav-menu]');
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('#main-nav');
+    const navOverlay = document.querySelector('[data-nav-overlay]');
+    const navClose = document.querySelector('.nav-close');
     if (!toggles.length || !menus.length) return;
 
     const closeAllMenus = () => {
@@ -165,11 +182,21 @@
       });
     });
 
+    const setNavOpen = (open) => {
+      navToggle?.setAttribute('aria-expanded', String(open));
+      nav?.classList.toggle('main-nav--open', open);
+      if (navOverlay) {
+        navOverlay.hidden = !open;
+      }
+    };
+
     navToggle?.addEventListener('click', () => {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!isOpen));
-      nav?.classList.toggle('main-nav--open', !isOpen);
+      setNavOpen(!isOpen);
     });
+
+    navClose?.addEventListener('click', () => setNavOpen(false));
+    navOverlay?.addEventListener('click', () => setNavOpen(false));
 
     document.addEventListener('click', (event) => {
       const clickedInsideMenu = Array.from(menus).some((menu) => menu.contains(event.target));
@@ -191,27 +218,1394 @@
   <main class="container">
     
       
-<article class="single-layout">
-  <div class="single-content">
-    
-    
-    <h1 class="single-title">Policy</h1>
-    
-    
-    <p>Add English content for Policy here.</p>
 
+
+  
+
+
+
+<section class="section-hub">
+  <header class="section-hub__header">
+    <h1 class="section-hub__title">Policy</h1>
+    
+      <p class="section-hub__description">Policy papers and proposals.</p>
+    
+  </header>
+
+  <div class="section-hub__blocks">
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Featured</h2>
+        
+          <div class="section-block__content">
+            Content coming soon.
+          </div>
+        
+      </section>
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Latest news and analysis</h2>
+        
+          <div class="section-block__content">
+            Content coming soon.
+          </div>
+        
+      </section>
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Research</h2>
+        
+          <div class="section-block__content">
+            Content coming soon.
+          </div>
+        
+      </section>
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Position papers</h2>
+        
+          <div class="section-block__content">
+            Content coming soon.
+          </div>
+        
+      </section>
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Press room</h2>
+        
+          <div class="section-block__content">
+            Content coming soon.
+          </div>
+        
+      </section>
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Events (upcoming / past)</h2>
+        
+          <div class="section-block__content">
+            Content coming soon.
+          </div>
+        
+      </section>
+    
+      
+      
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+        
+          
+            
+          
+        
+
+        
+          
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+            
+            
+            
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+        
+        
+        
+
+        
+          
+          
+        
+
+        
+        
+
+        
+        
+
+        
+      
+
+      <section class="section-block">
+        <h2>Blog</h2>
+        
+          <ul class="section-block__list">
+            
+              <li class="section-block__item">
+                
+                
+                  
+                  
+                    
+                    
+                  
+                
+                
+                  <div class="section-block__tags">
+                    
+                      
+                      
+                      <span class="section-block__tag">institutional</span>
+                    
+                  </div>
+                
+                <a class="section-block__link" href="/en/posts/hearing-iachr/">IACHR hearing on freedom of expression</a>
+                
+                  <p class="section-block__excerpt">Contribution of CELE to the hearing on freedom of expression in Argentina before the Inter-American Commission</p>
+                
+                
+                
+                
+                  <div class="section-block__byline">
+                    
+                      <span class="section-block__by">By Lina Palacios</span>
+                    
+                    
+                      <time class="section-block__date" datetime="2026-02-04">4 de febrero de 2026</time>
+                    
+                  </div>
+                
+              </li>
+            
+          </ul>
+        
+      </section>
+    
   </div>
-  <aside class="single-sidebar" aria-label="Boletin">
-    <div class="newsletter-box">
-      <h3 class="newsletter-title">Sign up for news about events, research, and litigation</h3>
-      <form class="newsletter-form" action="#" method="post">
-        <label class="sr-only" for="newsletter-email">Email</label>
-        <input class="newsletter-input" id="newsletter-email" type="email" name="email" placeholder="Email" required>
-        <button class="newsletter-button" type="submit">></button>
-      </form>
-    </div>
-  </aside>
-</article>
+</section>
+
+
 
     
   </main>

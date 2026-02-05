@@ -43,6 +43,8 @@
   </url><url>
     <loc>http://localhost:1313/en/about/</loc>
   </url><url>
+    <loc>http://localhost:1313/en/topics/artificial-intelligence/</loc>
+  </url><url>
     <loc>http://localhost:1313/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -69,6 +71,10 @@
                 href="http://localhost:1313/en/documentation/"
                 />
   </url><url>
+    <loc>http://localhost:1313/en/topics/freedom-of-expression/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/topics/governance/</loc>
+  </url><url>
     <loc>http://localhost:1313/en/mission/</loc>
     <xhtml:link
                 rel="alternate"
@@ -81,9 +87,23 @@
                 href="http://localhost:1313/en/mission/"
                 />
   </url><url>
+    <loc>http://localhost:1313/en/topics/human-rights/</loc>
+  </url><url>
     <loc>http://localhost:1313/en/policy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/policy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/policy/"
+                />
   </url><url>
     <loc>http://localhost:1313/en/press-room/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/topics/privacy-and-surveillance/</loc>
   </url><url>
     <loc>http://localhost:1313/en/research/</loc>
   </url><url>
@@ -100,6 +120,8 @@
                 />
   </url><url>
     <loc>http://localhost:1313/en/team/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/topics/threats/</loc>
   </url><url>
     <loc>http://localhost:1313/en/topics/</loc>
   </url><url>

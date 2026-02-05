@@ -20,27 +20,27 @@ defaultContentLanguageInSubdir = true
 
     [languages.es.menu]
       [[languages.es.menu.main]]
-        name = "Acerca de"
-        url = "/acerca-de/"
-        identifier = "acerca-de"
+        name = "Nosotros"
+        url = "/nosotros/"
+        identifier = "nosotros"
         weight = 1
 
       [[languages.es.menu.main]]
         name = "Nuestra misión"
         url = "/mision/"
-        parent = "acerca-de"
+        parent = "nosotros"
         weight = 11
 
       [[languages.es.menu.main]]
         name = "Equipo"
         url = "/equipo/"
-        parent = "acerca-de"
+        parent = "nosotros"
         weight = 12
 
       [[languages.es.menu.main]]
         name = "Contacto"
         url = "/contacto/"
-        parent = "acerca-de"
+        parent = "nosotros"
         weight = 13
 
       [[languages.es.menu.main]]

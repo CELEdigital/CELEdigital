@@ -2,9 +2,13 @@
 <article class="single-layout">
   <div class="single-content">
     {{ $isPost := eq .Type "posts" }}
-    {{ if $isPost }}
-      <div class="single-meta">
-        <span class="single-kicker">{{ .Type | upper }}</span>
+    {{ with .Params.tags }}
+      <div class="single-tags">
+        {{ range . }}
+          {{ $key := printf "tag_%s" . }}
+          {{ $label := i18n $key | default . }}
+          <span class="single-tag">{{ $label }}</span>
+        {{ end }}
       </div>
     {{ end }}
     <h1 class="single-title">{{ .Title }}</h1>

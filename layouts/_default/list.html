@@ -1,10 +1,15 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<ul>
-  {{ range .Pages }}
-    <li>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </li>
-  {{ end }}
-</ul>
+{{ $hubSections := slice "investigaciones" "policy" "temas" "topics" "research" }}
+{{ if in $hubSections .Section }}
+  {{ partial "section-hub.html" . }}
+{{ else }}
+  <h1>{{ .Title }}</h1>
+  <ul>
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
 {{ end }}

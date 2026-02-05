@@ -34,6 +34,9 @@
                 href="http://localhost:1313/es/"
                 />
   </url><url>
+    <loc>http://localhost:1313/es/tags/institucional/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/es/posts/</loc>
     <lastmod>2026-02-04T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -46,6 +49,21 @@
                 hreflang="es"
                 href="http://localhost:1313/es/posts/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/</loc>
+    <lastmod>2026-02-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/temas/amenazas/</loc>
   </url><url>
     <loc>http://localhost:1313/es/categories/</loc>
     <xhtml:link
@@ -61,6 +79,8 @@
   </url><url>
     <loc>http://localhost:1313/es/contacto/</loc>
   </url><url>
+    <loc>http://localhost:1313/es/temas/derechos-humanos/</loc>
+  </url><url>
     <loc>http://localhost:1313/es/documentacion/</loc>
     <xhtml:link
                 rel="alternate"
@@ -75,6 +95,8 @@
   </url><url>
     <loc>http://localhost:1313/es/equipo/</loc>
   </url><url>
+    <loc>http://localhost:1313/es/temas/gobernanza/</loc>
+  </url><url>
     <loc>http://localhost:1313/es/mision/</loc>
     <xhtml:link
                 rel="alternate"
@@ -86,6 +108,12 @@
                 hreflang="es"
                 href="http://localhost:1313/es/mision/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/es/temas/inteligencia-artificial/</loc>
+  </url><url>
+    <loc>http://localhost:1313/es/investigaciones/</loc>
+  </url><url>
+    <loc>http://localhost:1313/es/temas/libertad-de-expresion/</loc>
   </url><url>
     <loc>http://localhost:1313/es/observatorio-legislativo/</loc>
     <xhtml:link
@@ -99,16 +127,20 @@
                 href="http://localhost:1313/es/observatorio-legislativo/"
                 />
   </url><url>
-    <loc>http://localhost:1313/es/tags/</loc>
+    <loc>http://localhost:1313/es/policy/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/tags/"
+                href="http://localhost:1313/en/policy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="http://localhost:1313/es/tags/"
+                href="http://localhost:1313/es/policy/"
                 />
+  </url><url>
+    <loc>http://localhost:1313/es/temas/privacidad-y-vigilancia/</loc>
+  </url><url>
+    <loc>http://localhost:1313/es/temas/</loc>
   </url>
 </urlset>

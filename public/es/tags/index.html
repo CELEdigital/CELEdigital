@@ -25,17 +25,19 @@
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
     </button>
+    <div class="nav-overlay" data-nav-overlay hidden></div>
 
     <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <button class="nav-close" type="button" aria-label="Cerrar menú">×</button>
       <ul class="main-nav-list">
         
           
             
             <li class="nav-item nav-item--dropdown">
-              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-acerca-de">
-                Acerca de
+              <button class="nav-link nav-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-nosotros">
+                Nosotros
               </button>
-              <div class="nav-dropdown" id="nav-acerca-de" data-nav-menu hidden>
+              <div class="nav-dropdown" id="nav-nosotros" data-nav-menu hidden>
                 
                   <a class="nav-dropdown-link" href="/es/mision/">Nuestra misión</a>
                 
@@ -73,31 +75,36 @@
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/es/investigaciones/">investigaciones</a>
+              
+              <a class="nav-link " href="/es/investigaciones/">investigaciones</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/es/policy/">policy</a>
+              
+              <a class="nav-link " href="/es/policy/">policy</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/es/observatorio-legislativo/">observatorio legislativo</a>
+              
+              <a class="nav-link nav-link--wrap" href="/es/observatorio-legislativo/">observatorio legislativo</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/es/taller/">taller</a>
+              
+              <a class="nav-link " href="/es/taller/">taller</a>
             </li>
           
         
           
             <li class="nav-item">
-              <a class="nav-link" href="/es/sala-de-prensa/">sala de prensa</a>
+              
+              <a class="nav-link nav-link--wrap" href="/es/sala-de-prensa/">sala de prensa</a>
             </li>
           
         
@@ -142,6 +149,8 @@
     const menus = document.querySelectorAll('[data-nav-menu]');
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('#main-nav');
+    const navOverlay = document.querySelector('[data-nav-overlay]');
+    const navClose = document.querySelector('.nav-close');
     if (!toggles.length || !menus.length) return;
 
     const closeAllMenus = () => {
@@ -173,11 +182,21 @@
       });
     });
 
+    const setNavOpen = (open) => {
+      navToggle?.setAttribute('aria-expanded', String(open));
+      nav?.classList.toggle('main-nav--open', open);
+      if (navOverlay) {
+        navOverlay.hidden = !open;
+      }
+    };
+
     navToggle?.addEventListener('click', () => {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!isOpen));
-      nav?.classList.toggle('main-nav--open', !isOpen);
+      setNavOpen(!isOpen);
     });
+
+    navClose?.addEventListener('click', () => setNavOpen(false));
+    navOverlay?.addEventListener('click', () => setNavOpen(false));
 
     document.addEventListener('click', (event) => {
       const clickedInsideMenu = Array.from(menus).some((menu) => menu.contains(event.target));
@@ -199,10 +218,17 @@
   <main class="container">
     
       
-<h1>Tags</h1>
-<ul>
-  
-</ul>
+
+
+  <h1>Tags</h1>
+  <ul>
+    
+      <li>
+        <a href="/es/tags/institucional/">Institucional</a>
+      </li>
+    
+  </ul>
+
 
     
   </main>

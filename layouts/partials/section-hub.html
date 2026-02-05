@@ -1,0 +1,112 @@
+{{ $sectionKey := .Params.section_key | default .Section }}
+{{ $items := site.RegularPages }}
+{{ $blocks := slice
+  (dict "key" "featured" "title" (i18n "hub_featured"))
+  (dict "key" "news-analysis" "title" (i18n "hub_news"))
+  (dict "key" "research" "title" (i18n "hub_research"))
+  (dict "key" "position-paper" "title" (i18n "hub_position"))
+  (dict "key" "press" "title" (i18n "hub_press"))
+  (dict "key" "event" "title" (i18n "hub_events"))
+  (dict "key" "blog" "title" (i18n "hub_blog"))
+}}
+
+<section class="section-hub">
+  <header class="section-hub__header">
+    <h1 class="section-hub__title">{{ .Title }}</h1>
+    {{ with .Params.description }}
+      <p class="section-hub__description">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="section-hub__blocks">
+    {{ range $blocks }}
+      {{ $blockKey := .key }}
+      {{ $blockItems := slice }}
+      {{ range $items }}
+        {{ $page := . }}
+        {{ $programs := $page.Params.programs }}
+        {{ $ctype := $page.Params.content_type }}
+
+        {{ if or (not $programs) (not $ctype) }}
+          {{ $translations := $page.Translations }}
+          {{ if gt (len $translations) 0 }}
+            {{ $t := index $translations 0 }}
+            {{ if not $programs }}{{ $programs = $t.Params.programs }}{{ end }}
+            {{ if not $ctype }}{{ $ctype = $t.Params.content_type }}{{ end }}
+          {{ end }}
+        {{ end }}
+
+        {{ $programList := slice }}
+        {{ if $programs }}
+          {{ if reflect.IsSlice $programs }}
+            {{ $programList = $programs }}
+          {{ else }}
+            {{ $programList = slice $programs }}
+          {{ end }}
+        {{ end }}
+
+        {{ $ctypeList := slice }}
+        {{ if $ctype }}
+          {{ if reflect.IsSlice $ctype }}
+            {{ $ctypeList = $ctype }}
+          {{ else }}
+            {{ $ctypeList = slice $ctype }}
+          {{ end }}
+        {{ end }}
+
+        {{ if and (in $programList $sectionKey) (in $ctypeList $blockKey) }}
+          {{ $blockItems = $blockItems | append $page }}
+        {{ end }}
+      {{ end }}
+
+      <section class="section-block">
+        <h2>{{ .title }}</h2>
+        {{ if gt (len $blockItems) 0 }}
+          <ul class="section-block__list">
+            {{ range first 3 $blockItems }}
+              <li class="section-block__item">
+                {{ $tags := .Params.tags }}
+                {{ if not $tags }}
+                  {{ $translations := .Translations }}
+                  {{ if gt (len $translations) 0 }}
+                    {{ $t := index $translations 0 }}
+                    {{ $tags = $t.Params.tags }}
+                  {{ end }}
+                {{ end }}
+                {{ with $tags }}
+                  <div class="section-block__tags">
+                    {{ range . }}
+                      {{ $key := printf "tag_%s" . }}
+                      {{ $label := i18n $key | default . }}
+                      <span class="section-block__tag">{{ $label }}</span>
+                    {{ end }}
+                  </div>
+                {{ end }}
+                <a class="section-block__link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ with .Params.description }}
+                  <p class="section-block__excerpt">{{ . }}</p>
+                {{ end }}
+                {{ $hasAuthor := .Params.author }}
+                {{ $hasDate := not .Date.IsZero }}
+                {{ if or $hasAuthor $hasDate }}
+                  <div class="section-block__byline">
+                    {{ with .Params.author }}
+                      <span class="section-block__by">{{ i18n "byline" }} {{ delimit . ", " " y " }}</span>
+                    {{ end }}
+                    {{ if $hasDate }}
+                      <time class="section-block__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "date-es.html" .Date }}</time>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </li>
+            {{ end }}
+          </ul>
+        {{ else }}
+          <div class="section-block__content">
+            {{ i18n "hub_empty" }}
+          </div>
+        {{ end }}
+      </section>
+    {{ end }}
+  </div>
+</section>

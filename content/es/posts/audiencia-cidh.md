@@ -5,6 +5,9 @@ description: "Contribución del CELE a la audiencia sobre libertad de expresión
 featured: true
 translationKey: CIDH-hearing
 date: 2026-02-04
+programs: ["policy"] # or policy, investigaciones, topics, research
+content_type: ["blog"]
+tags: ["institucional"]
 author: 
   - Lina Palacios
 image: "/img/sanfrancisco2018.jpeg"

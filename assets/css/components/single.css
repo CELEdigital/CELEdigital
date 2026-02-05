@@ -25,6 +25,20 @@
   color: var(--cele);
 }
 
+.single-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.6rem;
+}
+
+.single-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--neutral-600);
+}
+
 .single-dek {
   font-size: 1.2rem;
   line-height: 1.2;

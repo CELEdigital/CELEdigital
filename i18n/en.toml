@@ -99,3 +99,45 @@ other = "Link"
 
 [doc_load_more]
 other = "Load more"
+
+[hub_featured]
+other = "Featured"
+
+[hub_news]
+other = "Latest news and analysis"
+
+[hub_research]
+other = "Research"
+
+[hub_position]
+other = "Position papers"
+
+[hub_press]
+other = "Press room"
+
+[hub_events]
+other = "Events (upcoming / past)"
+
+[hub_blog]
+other = "Blog"
+
+[hub_empty]
+other = "Content coming soon."
+
+[tag_institucional]
+other = "institutional"
+
+[tag_en_profundidad]
+other = "deep dive"
+
+[tag_reaccion_rapida]
+other = "quick response"
+
+[tag_blog]
+other = "blog"
+
+[tag_policy]
+other = "policy"
+
+[tag_sala_de_prensa]
+other = "press room"

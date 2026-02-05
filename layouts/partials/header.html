@@ -14,8 +14,10 @@
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
     </button>
+    <div class="nav-overlay" data-nav-overlay hidden></div>
 
     <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <button class="nav-close" type="button" aria-label="Cerrar menú">×</button>
       <ul class="main-nav-list">
         {{ range .Site.Menus.main }}
           {{ if .Children }}
@@ -32,7 +34,8 @@
             </li>
           {{ else }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+              {{ $wrap := or (eq (lower .Name) "observatorio legislativo") (eq (lower .Name) "sala de prensa") (eq (lower .Name) "legislative observatory") (eq (lower .Name) "press room") }}
+              <a class="nav-link {{ if $wrap }}nav-link--wrap{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
             </li>
           {{ end }}
         {{ end }}
@@ -75,6 +78,8 @@
     const menus = document.querySelectorAll('[data-nav-menu]');
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('#main-nav');
+    const navOverlay = document.querySelector('[data-nav-overlay]');
+    const navClose = document.querySelector('.nav-close');
     if (!toggles.length || !menus.length) return;
 
     const closeAllMenus = () => {
@@ -106,11 +111,21 @@
       });
     });
 
+    const setNavOpen = (open) => {
+      navToggle?.setAttribute('aria-expanded', String(open));
+      nav?.classList.toggle('main-nav--open', open);
+      if (navOverlay) {
+        navOverlay.hidden = !open;
+      }
+    };
+
     navToggle?.addEventListener('click', () => {
       const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!isOpen));
-      nav?.classList.toggle('main-nav--open', !isOpen);
+      setNavOpen(!isOpen);
     });
+
+    navClose?.addEventListener('click', () => setNavOpen(false));
+    navOverlay?.addEventListener('click', () => setNavOpen(false));
 
     document.addEventListener('click', (event) => {
       const clickedInsideMenu = Array.from(menus).some((menu) => menu.contains(event.target));

@@ -51,6 +51,10 @@
   margin: 0.25rem 0;
 }
 
+.nav-close {
+  display: none;
+}
+
 .main-nav-list {
   list-style: none;
   display: flex;
@@ -67,7 +71,7 @@
     gap: 0.1rem;
   }
 
-  .main-nav {
+.main-nav {
     position: fixed;
     top: 0;
     right: 0;
@@ -81,6 +85,25 @@
     display: none;
     z-index: 30;
     overflow-y: auto;
+  }
+
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 25;
+  }
+
+  .nav-close {
+    display: inline-flex;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 
   .main-nav--open {
@@ -108,6 +131,20 @@
   display: inline-flex;
   align-items: center;
   padding: 0.5rem;
+}
+
+.nav-link--wrap {
+  max-width: 7.5rem;
+  white-space: normal;
+  text-align: center;
+  justify-content: center;
+}
+
+@media (max-width: 1070px) {
+  .nav-link--wrap {
+    text-align: left;
+    justify-content: flex-start;
+  }
 }
 
 .lang-toggle {
