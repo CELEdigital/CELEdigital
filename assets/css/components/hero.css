@@ -74,8 +74,10 @@
 
 .hero-slide img {
   width: 100%;
-  max-width: 90%;
-  height: auto;
+  max-width: 755px;
+  height: 607px;
+  object-fit: cover;
+  object-position: top;
   display: block;
 }
 

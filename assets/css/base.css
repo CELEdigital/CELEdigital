@@ -7,6 +7,7 @@
   --gutter: 1.5rem;
   --max-width: 1200px;
   --cele: #ad2b25ff;
+  --columbia-blue: #1c55b0;
   --cele-yellow: #fdc643ff;
   --base-bg: #F5F3EE; /* colors inspired by merve verlag berlin, este es cremita */
   --text-dark: #2E2E2E;
@@ -73,6 +74,10 @@ h1,h2,h3,h4,h5 {
   font-family: 'Jost';
 }
 
+h2 {
+  font-size: 2.4rem;
+}
+
 h5 {
   font-size: 1.1rem;
   color: var(--accent-burgundy2);
@@ -86,6 +91,19 @@ article h3 {
 
 article p {
   margin-bottom: 1.1em;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+  text-decoration-color: currentColor;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration-thickness: 0.1em;
 }
 
 .sr-only {

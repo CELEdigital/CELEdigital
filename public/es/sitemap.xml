@@ -63,7 +63,30 @@
                 href="http://localhost:1313/es/tags/"
                 />
   </url><url>
+    <loc>http://localhost:1313/es/posts/acceso-a-datos-para-investigadores/</loc>
+    <lastmod>2025-10-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/posts/data-access-for-researchers/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/posts/acceso-a-datos-para-investigadores/"
+                />
+  </url><url>
     <loc>http://localhost:1313/es/temas/amenazas/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/threats/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/amenazas/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/categories/</loc>
     <xhtml:link
@@ -80,6 +103,16 @@
     <loc>http://localhost:1313/es/contacto/</loc>
   </url><url>
     <loc>http://localhost:1313/es/temas/derechos-humanos/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/human-rights/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/derechos-humanos/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/documentacion/</loc>
     <xhtml:link
@@ -96,6 +129,16 @@
     <loc>http://localhost:1313/es/equipo/</loc>
   </url><url>
     <loc>http://localhost:1313/es/temas/gobernanza/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/governance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/gobernanza/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/mision/</loc>
     <xhtml:link
@@ -110,10 +153,40 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/temas/inteligencia-artificial/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/artificial-intelligence/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/inteligencia-artificial/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/investigaciones/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/investigaciones/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/temas/libertad-de-expresion/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/freedom-of-expression/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/libertad-de-expresion/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/observatorio-legislativo/</loc>
     <xhtml:link
@@ -140,7 +213,27 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/temas/privacidad-y-vigilancia/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/privacy-and-surveillance/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/privacidad-y-vigilancia/"
+                />
   </url><url>
     <loc>http://localhost:1313/es/temas/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/topics/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/temas/"
+                />
   </url>
 </urlset>

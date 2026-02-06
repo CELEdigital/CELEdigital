@@ -46,13 +46,11 @@
             {{ $tkey := $current.Params.translationKey }}
             {{ range .Sites }}
               {{ $target := .Home }}
-              {{ if $current.IsTranslated }}
-                {{ $matches := where $translations "Lang" .Language.Lang }}
-                {{ if gt (len $matches) 0 }}
-                  {{ $target = index $matches 0 }}
-                {{ end }}
+              {{ $matches := where $translations "Lang" .Language.Lang }}
+              {{ if gt (len $matches) 0 }}
+                {{ $target = index $matches 0 }}
               {{ end }}
-              {{ if and (not $current.IsTranslated) $tkey }}
+              {{ if and (eq (len $matches) 0) $tkey }}
                 {{ $candidates := where .AllPages "Params.translationKey" $tkey }}
                 {{ $langMatches := where $candidates "Lang" .Language.Lang }}
                 {{ if gt (len $langMatches) 0 }}
