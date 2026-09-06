@@ -27,6 +27,12 @@
 {{ $objetivosLegitimosLabel := cond $isES "Objetivos legítimos" "Legitimate aims" }}
 {{ $boletinesLabel := cond $isES "Boletines" "Bulletins" }}
 {{ $mesasLabel := cond $isES "Mesas" "Mesas" }}
+{{/* Prohibiciones e incentivos is a standalone page, not an inline panel: it
+     carries its own filters and a 380 KB dataset, so it does not belong inside
+     the hub's accordion. Linked only when the page exists in this language. */}}
+{{ $bansLabel := cond $isES "Prohibiciones e incentivos" "Bans and nudges" }}
+{{ $bansPath := cond $isES (printf "/%s/prohibiciones-e-incentivos" .Section) (printf "/%s/bans-and-nudges" .Section) }}
+{{ $bansPage := .Site.GetPage $bansPath }}
 {{ $defaultMetodologiaURL := cond $isES (printf "%smetodologia/" .RelPermalink) (printf "%smethodology/" .RelPermalink) }}
 {{ $defaultObjetivosURL := cond $isES (printf "%sobjetivos/" .RelPermalink) (printf "%sobjectives/" .RelPermalink) }}
 {{ $defaultObjetivosLegitimosURL := cond $isES (printf "%sobjetivos-legitimos/" .RelPermalink) (printf "%slegitimate-aims/" .RelPermalink) }}
@@ -195,6 +201,11 @@
         aria-expanded="false"
       >{{ $mesasLabel }}</a>
     </h3>
+    {{ with $bansPage }}
+    <h3 class="observatory-links__item">
+      <a href="{{ .RelPermalink }}">{{ $bansLabel }}</a>
+    </h3>
+    {{ end }}
   </div>
 
   <div class="observatory-downloads">

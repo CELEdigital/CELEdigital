@@ -1,0 +1,552 @@
+/* Prohibiciones e incentivos / Bans and nudges
+   ------------------------------------------------------------------
+   Inventory of statutes and bills that regulate minors' access to digital
+   services. Follows the observatory's existing vocabulary: cream header band,
+   white cards on a 1px neutral border, pill chips, and the notched CELE rule
+   under the section title.
+
+   The one idea this component adds is the provenance stripe: every claim on a
+   card is colour-keyed to the kind of source it rests on, so a statutory
+   definition never looks like a law firm's paraphrase of one. */
+
+.bans-nudges {
+  --bn-live: var(--forest-green);
+  --bn-contested: var(--cele);
+  --bn-pending: var(--columbia-blue);
+  --bn-gone: var(--neutral-600);
+
+  /* Provenance: official text, specialist secondary, journalism. */
+  --bn-official: var(--forest-green);
+  --bn-specialist: var(--accent-beige);
+  --bn-press: var(--neutral-pale-blue);
+
+  display: grid;
+  gap: 1.75rem;
+  margin: 1.5rem 0 3rem;
+  font-family: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+}
+
+/* ── Standfirst and the reading key ───────────────────────────────── */
+
+.bn-intro {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.bn-intro__lede {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--neutral-800);
+  max-width: 46rem;
+}
+
+.bn-key {
+  border: 1px solid var(--neutral-300);
+  background: #fff;
+  padding: 0.9rem 1.05rem;
+}
+
+.bn-key__title {
+  margin: 0 0 0.55rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+}
+
+.bn-key__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  color: var(--neutral-800);
+}
+
+.bn-key__list li {
+  display: grid;
+  grid-template-columns: 0.65rem 1fr;
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.bn-key__swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-top: 0.32em;
+  border-radius: 2px;
+  background: var(--bn-official);
+}
+
+.bn-key__swatch[data-tier='specialist'] { background: var(--bn-specialist); }
+.bn-key__swatch[data-tier='press']      { background: var(--bn-press); }
+
+@media (max-width: 900px) {
+  .bn-intro { grid-template-columns: 1fr; }
+}
+
+/* ── Controls ─────────────────────────────────────────────────────── */
+
+.bn-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.85rem;
+  align-items: end;
+  padding: 1rem 0 0;
+  border-top: 2px solid var(--cele);
+}
+
+.bn-control {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.bn-control > span {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+}
+
+.bn-control select,
+.bn-control input {
+  font: inherit;
+  font-size: 0.92rem;
+  width: 100%;
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--neutral-300);
+  border-radius: 0;
+  background: #fff;
+  color: var(--text-dark);
+}
+
+.bn-control select:focus-visible,
+.bn-control input:focus-visible {
+  outline: 2px solid var(--cele);
+  outline-offset: 1px;
+}
+
+.bn-control--search { grid-column: 1 / -1; }
+
+.bn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.bn-count {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--neutral-800);
+}
+
+.bn-count b { color: var(--cele); }
+
+.bn-reset {
+  font: inherit;
+  font-size: 0.85rem;
+  border: 1px solid var(--neutral-300);
+  background: transparent;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--neutral-800);
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.bn-reset:hover,
+.bn-reset:focus-visible {
+  background: var(--cele);
+  border-color: var(--cele);
+  color: #fff;
+}
+
+/* ── Status distribution strip ────────────────────────────────────── */
+
+.bn-strip {
+  display: flex;
+  width: 100%;
+  height: 0.7rem;
+  overflow: hidden;
+  border: 1px solid var(--neutral-300);
+  background: var(--neutral-200);
+}
+
+.bn-strip__seg {
+  height: 100%;
+  min-width: 2px;
+  transition: flex-grow 260ms ease;
+}
+
+.bn-strip__seg[data-tone='live']      { background: var(--bn-live); }
+.bn-strip__seg[data-tone='contested'] { background: var(--bn-contested); }
+.bn-strip__seg[data-tone='pending']   { background: var(--bn-pending); }
+.bn-strip__seg[data-tone='gone']      { background: var(--bn-gone); }
+
+.bn-strip-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--neutral-600);
+}
+
+.bn-strip-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bn-strip-legend i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background: var(--bn-live);
+}
+
+.bn-strip-legend li[data-tone='contested'] i { background: var(--bn-contested); }
+.bn-strip-legend li[data-tone='pending'] i   { background: var(--bn-pending); }
+.bn-strip-legend li[data-tone='gone'] i      { background: var(--bn-gone); }
+
+/* ── Cards ────────────────────────────────────────────────────────── */
+
+.bn-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.bn-card {
+  border: 1px solid var(--neutral-300);
+  border-left: 4px solid var(--bn-gone);
+  background: #fff;
+}
+
+.bn-card[data-tone='live']      { border-left-color: var(--bn-live); }
+.bn-card[data-tone='contested'] { border-left-color: var(--bn-contested); }
+.bn-card[data-tone='pending']   { border-left-color: var(--bn-pending); }
+
+.bn-card__head {
+  display: grid;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0.95rem 1.1rem;
+  cursor: pointer;
+}
+
+.bn-card__head:hover { background: var(--neutral-100); }
+
+.bn-card__head:focus-visible {
+  outline: 2px solid var(--cele);
+  outline-offset: -2px;
+}
+
+.bn-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.6rem;
+  align-items: baseline;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--neutral-600);
+}
+
+.bn-card__place { color: var(--cele); }
+
+.bn-card__name {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--neutral-900);
+}
+
+.bn-card__official {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--neutral-600);
+}
+
+.bn-card__gist {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text-dark);
+}
+
+.bn-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.bn-chip {
+  font-size: 0.78rem;
+  line-height: 1.2;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--neutral-300);
+  border-radius: 999px;
+  color: var(--neutral-800);
+  white-space: nowrap;
+}
+
+.bn-chip--status {
+  border-color: currentColor;
+  font-weight: 600;
+}
+
+.bn-chip--status[data-tone='live']      { color: var(--bn-live); }
+.bn-chip--status[data-tone='contested'] { color: var(--bn-contested); }
+.bn-chip--status[data-tone='pending']   { color: var(--bn-pending); }
+.bn-chip--status[data-tone='gone']      { color: var(--bn-gone); }
+
+.bn-chip--quadrant {
+  background: var(--neutral-200);
+  border-color: var(--neutral-200);
+  font-weight: 600;
+}
+
+/* ── Card body ────────────────────────────────────────────────────── */
+
+.bn-card__body {
+  border-top: 1px solid var(--neutral-200);
+  padding: 1.15rem 1.1rem 1.3rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem 1.8rem;
+}
+
+.bn-card__body[hidden] { display: none !important; }
+
+@media (max-width: 820px) {
+  .bn-card__body { grid-template-columns: 1fr; }
+}
+
+.bn-block { min-width: 0; }
+.bn-block--wide { grid-column: 1 / -1; }
+
+.bn-block > h4 {
+  margin: 0 0 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--cele);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral-900);
+}
+
+.bn-def {
+  margin: 0 0 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.bn-def dt {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+}
+
+.bn-def dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.bn-reqs {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.93rem;
+  line-height: 1.45;
+}
+
+.bn-reqs li {
+  display: grid;
+  grid-template-columns: 0.9rem 1fr;
+  gap: 0.35rem;
+  color: var(--text-dark);
+}
+
+.bn-reqs li::before {
+  content: '';
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-top: 0.55em;
+  border-radius: 50%;
+  background: var(--cele);
+}
+
+.bn-prose {
+  margin: 0 0 0.7rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--text-dark);
+}
+
+/* Procedural history: injunctions, appeals, repeals, in order. */
+.bn-history {
+  margin: 0.6rem 0 0;
+  padding: 0 0 0 0.9rem;
+  list-style: none;
+  border-left: 1px solid var(--neutral-300);
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--neutral-600);
+}
+
+.bn-history li { position: relative; }
+
+.bn-history li::before {
+  content: '';
+  position: absolute;
+  left: -1.16rem;
+  top: 0.5em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--neutral-300);
+}
+
+/* ── Provenance ───────────────────────────────────────────────────── */
+
+.bn-src {
+  display: block;
+  border-left: 4px solid var(--bn-specialist);
+  padding: 0.4rem 0 0.4rem 0.7rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--neutral-800);
+  text-decoration: none;
+}
+
+.bn-src[data-tier='statute'],
+.bn-src[data-tier='gazette'],
+.bn-src[data-tier='regulator'],
+.bn-src[data-tier='parliament'] { border-left-color: var(--bn-official); }
+
+.bn-src[data-tier='press'] { border-left-color: var(--bn-press); }
+
+a.bn-src:hover,
+a.bn-src:focus-visible { background: var(--neutral-100); }
+
+.bn-src__tier {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+  margin-bottom: 0.15rem;
+}
+
+.bn-src__label { font-weight: 600; }
+
+a.bn-src .bn-src__label {
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+.bn-src__note {
+  display: block;
+  color: var(--neutral-600);
+  font-size: 0.84rem;
+}
+
+/* A flag the reader should not miss: the dataset said one thing and the
+   sources say another. */
+.bn-flag {
+  border-left: 4px solid var(--cele);
+  background: rgba(173, 43, 37, 0.06);
+  padding: 0.55rem 0.8rem;
+  margin: 0 0 0.7rem;
+  font-size: 0.89rem;
+  line-height: 1.5;
+  color: var(--neutral-900);
+}
+
+.bn-flag strong {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cele);
+  margin-bottom: 0.15rem;
+}
+
+.bn-untranslated {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+  border: 1px dashed var(--neutral-300);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  margin-left: 0.35rem;
+  vertical-align: 0.1em;
+}
+
+.bn-empty {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--neutral-600);
+}
+
+.bn-note {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--neutral-600);
+  border-top: 1px solid var(--neutral-200);
+  padding-top: 0.9rem;
+  margin: 0;
+}
+
+.bn-note a { color: var(--cele); }
+
+/* No-JS: the page still has to say what it is and where the data lives. */
+.no-js .bans-nudges__interactive { display: none; }
+.bans-nudges__nojs { display: none; }
+.no-js .bans-nudges__nojs { display: block; }

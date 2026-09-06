@@ -246,3 +246,140 @@ other = "Other"
 
 [boletin_sin_novedades]
 other = "No legislative developments this month."
+
+# ── Bans and nudges ──────────────────────────────────────────────────
+[bn_lede]
+other = "Seventy-seven statutes, regulations and bills governing minors' access to digital services. For each one: who it covers and where that definition comes from, what it requires, and where it stands — with the official source and a recent account of that same status kept apart."
+
+[bn_key_title]
+other = "How to read the sources"
+
+[bn_key_official]
+other = "Statutory text, official gazette, regulator or parliamentary record."
+
+[bn_key_specialist]
+other = "Specialist tracker or law-firm analysis: a paraphrase of the statutory text."
+
+[bn_key_press]
+other = "Press: good for dating an event. What an instrument says comes from the official source."
+
+[bn_key_official_short]
+other = "Official source"
+
+[bn_key_specialist_short]
+other = "Secondary source"
+
+[bn_search]
+other = "Search"
+
+[bn_search_placeholder]
+other = "jurisdiction, instrument, definition, requirement…"
+
+[bn_all]
+other = "All"
+
+[bn_region]
+other = "Region"
+
+[bn_quadrant]
+other = "Type"
+
+[bn_mechanism]
+other = "Mechanism"
+
+[bn_status]
+other = "Status"
+
+[bn_evidence]
+other = "Definition rests on"
+
+[bn_reset]
+other = "Clear filters"
+
+[bn_showing]
+one = "instrument"
+other = "instruments"
+
+[bn_of]
+other = "of"
+
+[bn_empty]
+other = "No instrument matches these filters."
+
+[bn_open]
+other = "Show detail"
+
+[bn_strip_label]
+other = "Distribution of the current selection by status"
+
+[bn_nojs]
+other = "This page needs JavaScript to render the inventory. The full data is at"
+
+[bn_provenance]
+other = "{count} instruments. Built {built}. Scope and dates for US state statutes: {tracker}. Everything else researched instrument by instrument."
+
+[bn_h_covers]
+other = "What it covers"
+
+[bn_h_does]
+other = "What it requires"
+
+[bn_h_stands]
+other = "Where it stands"
+
+[bn_h_sources]
+other = "Sources"
+
+[bn_l_who]
+other = "Who must comply"
+
+[bn_l_whom]
+other = "Who is protected"
+
+[bn_l_exceptions]
+other = "Carve-outs"
+
+[bn_l_defsource]
+other = "Where the definition comes from"
+
+[bn_l_mechanism]
+other = "Mechanism"
+
+[bn_l_requirements]
+other = "Obligations"
+
+[bn_l_agecheck]
+other = "Age-verification method"
+
+[bn_l_enforcement]
+other = "Enforcement and penalties"
+
+[bn_l_effective]
+other = "Effective date"
+
+[bn_l_history]
+other = "Judicial and legislative history"
+
+[bn_l_primary]
+other = "Official source"
+
+[bn_l_reporting]
+other = "Recent reporting on status"
+
+[bn_l_asof]
+other = "Verified as of"
+
+[bn_l_tracker]
+other = "Tracker entry"
+
+[bn_l_correction]
+other = "Correction to the dataset"
+
+[bn_l_note]
+other = "Note"
+
+[bn_l_citedfor]
+other = "Cited in the paper for"
+
+[bn_untranslated]
+other = "in English"

@@ -246,3 +246,140 @@ other = "Otros"
 
 [boletin_sin_novedades]
 other = "Sin novedades legislativas este mes."
+
+# ── Prohibiciones e incentivos (bans-nudges) ─────────────────────────
+[bn_lede]
+other = "Setenta y siete leyes, reglamentos y proyectos que regulan el acceso de personas menores de edad a servicios digitales. De cada uno se indica a quién alcanza y de dónde sale esa definición, qué obliga a hacer, y en qué estado está: con la fuente oficial y una crónica reciente de ese mismo estado, por separado."
+
+[bn_key_title]
+other = "Cómo leer las fuentes"
+
+[bn_key_official]
+other = "Texto de la norma, boletín oficial, autoridad regulatoria o registro parlamentario."
+
+[bn_key_specialist]
+other = "Repositorio especializado o análisis de estudio jurídico: paráfrasis del texto de la norma."
+
+[bn_key_press]
+other = "Prensa: sirve para fechar un hecho. Lo que dice la norma se toma de la fuente oficial."
+
+[bn_key_official_short]
+other = "Fuente oficial"
+
+[bn_key_specialist_short]
+other = "Fuente secundaria"
+
+[bn_search]
+other = "Buscar"
+
+[bn_search_placeholder]
+other = "jurisdicción, norma, definición, requisito…"
+
+[bn_all]
+other = "Todos"
+
+[bn_region]
+other = "Región"
+
+[bn_quadrant]
+other = "Tipo"
+
+[bn_mechanism]
+other = "Mecanismo"
+
+[bn_status]
+other = "Estado"
+
+[bn_evidence]
+other = "Origen de la definición"
+
+[bn_reset]
+other = "Limpiar filtros"
+
+[bn_showing]
+one = "instrumento"
+other = "instrumentos"
+
+[bn_of]
+other = "de"
+
+[bn_empty]
+other = "Ningún instrumento coincide con estos filtros."
+
+[bn_open]
+other = "Ver detalle"
+
+[bn_strip_label]
+other = "Distribución de la selección por estado"
+
+[bn_nojs]
+other = "Esta página necesita JavaScript para mostrar el inventario. Los datos completos están en"
+
+[bn_provenance]
+other = "{count} instrumentos. Compilado el {built}. Alcance y fechas de las normas estaduales de Estados Unidos: {tracker}. El resto, relevado norma por norma."
+
+[bn_h_covers]
+other = "Qué alcanza"
+
+[bn_h_does]
+other = "Qué obliga a hacer"
+
+[bn_h_stands]
+other = "En qué estado está"
+
+[bn_h_sources]
+other = "Fuentes"
+
+[bn_l_who]
+other = "Quién debe cumplir"
+
+[bn_l_whom]
+other = "A quién protege"
+
+[bn_l_exceptions]
+other = "Exclusiones"
+
+[bn_l_defsource]
+other = "De dónde sale la definición"
+
+[bn_l_mechanism]
+other = "Mecanismo"
+
+[bn_l_requirements]
+other = "Obligaciones"
+
+[bn_l_agecheck]
+other = "Método de verificación de edad"
+
+[bn_l_enforcement]
+other = "Aplicación y sanciones"
+
+[bn_l_effective]
+other = "Entrada en vigor"
+
+[bn_l_history]
+other = "Trámite judicial y legislativo"
+
+[bn_l_primary]
+other = "Fuente oficial"
+
+[bn_l_reporting]
+other = "Crónica reciente del estado"
+
+[bn_l_asof]
+other = "Verificado al"
+
+[bn_l_tracker]
+other = "Ficha en el repositorio"
+
+[bn_l_correction]
+other = "Corrección respecto del conjunto de datos"
+
+[bn_l_note]
+other = "Nota"
+
+[bn_l_citedfor]
+other = "Citado en el trabajo para"
+
+[bn_untranslated]
+other = "en inglés"

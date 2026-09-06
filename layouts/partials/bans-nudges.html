@@ -1,0 +1,131 @@
+{{- /*
+  Prohibiciones e incentivos / Bans and nudges.
+
+  Chrome is rendered here so it is translated by Hugo and present without JS.
+  The records themselves are drawn client-side from static/data/bans_nudges.json,
+  which carries every string in both languages; the language is handed to the
+  script through data-bn-lang rather than duplicated into i18n keys.
+
+  Built by build_bans_nudges_site.py in the 45_drug_based_approach project
+  folder -- do not hand-edit the JSON.
+*/ -}}
+{{- $dataURL := "data/bans_nudges.json" | relURL -}}
+{{- $lang := .Lang | default site.Language.Lang -}}
+
+<section class="bans-nudges"
+  data-bans-nudges
+  data-bn-url="{{ $dataURL }}"
+  data-bn-lang="{{ $lang }}">
+
+  <div class="bn-intro">
+    <p class="bn-intro__lede">{{ i18n "bn_lede" }}</p>
+
+    <div class="bn-key">
+      <p class="bn-key__title">{{ i18n "bn_key_title" }}</p>
+      <ul class="bn-key__list">
+        <li><span class="bn-key__swatch" data-tier="official" aria-hidden="true"></span>
+            <span>{{ i18n "bn_key_official" }}</span></li>
+        <li><span class="bn-key__swatch" data-tier="specialist" aria-hidden="true"></span>
+            <span>{{ i18n "bn_key_specialist" }}</span></li>
+        <li><span class="bn-key__swatch" data-tier="press" aria-hidden="true"></span>
+            <span>{{ i18n "bn_key_press" }}</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bans-nudges__interactive">
+    <div class="bn-controls">
+      <label class="bn-control bn-control--search">
+        <span>{{ i18n "bn_search" }}</span>
+        <input type="search" data-bn-search placeholder="{{ i18n "bn_search_placeholder" }}">
+      </label>
+
+      <label class="bn-control">
+        <span>{{ i18n "bn_region" }}</span>
+        <select data-bn-filter="region"><option value="">{{ i18n "bn_all" }}</option></select>
+      </label>
+
+      <label class="bn-control">
+        <span>{{ i18n "bn_quadrant" }}</span>
+        <select data-bn-filter="quadrant"><option value="">{{ i18n "bn_all" }}</option></select>
+      </label>
+
+      <label class="bn-control">
+        <span>{{ i18n "bn_mechanism" }}</span>
+        <select data-bn-filter="mechanism"><option value="">{{ i18n "bn_all" }}</option></select>
+      </label>
+
+      <label class="bn-control">
+        <span>{{ i18n "bn_status" }}</span>
+        <select data-bn-filter="status"><option value="">{{ i18n "bn_all" }}</option></select>
+      </label>
+
+      <label class="bn-control">
+        <span>{{ i18n "bn_evidence" }}</span>
+        <select data-bn-filter="tier">
+          <option value="">{{ i18n "bn_all" }}</option>
+          <option value="official">{{ i18n "bn_key_official_short" }}</option>
+          <option value="secondary">{{ i18n "bn_key_specialist_short" }}</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="bn-toolbar">
+      <p class="bn-count" data-bn-count aria-live="polite"></p>
+      <button type="button" class="bn-reset" data-bn-reset>{{ i18n "bn_reset" }}</button>
+    </div>
+
+    <div>
+      <div class="bn-strip" data-bn-strip role="img" aria-label="{{ i18n "bn_strip_label" }}"></div>
+      <ul class="bn-strip-legend" data-bn-legend></ul>
+    </div>
+
+    <div class="bn-list" data-bn-list></div>
+  </div>
+
+  <noscript>
+    <p class="bn-note">{{ i18n "bn_nojs" }} <a href="{{ $dataURL }}">bans_nudges.json</a>.</p>
+  </noscript>
+
+  <p class="bn-note" data-bn-provenance></p>
+</section>
+
+{{- /* Strings the script needs. Kept out of the markup so the card template
+       stays legible, and out of the JSON so translators find them with the
+       rest of the chrome. */ -}}
+<script type="application/json" data-bn-strings>
+{{- dict
+  "covers"        (i18n "bn_h_covers")
+  "does"          (i18n "bn_h_does")
+  "stands"        (i18n "bn_h_stands")
+  "sources"       (i18n "bn_h_sources")
+  "who"           (i18n "bn_l_who")
+  "whom"          (i18n "bn_l_whom")
+  "exceptions"    (i18n "bn_l_exceptions")
+  "defSource"     (i18n "bn_l_defsource")
+  "mechanism"     (i18n "bn_l_mechanism")
+  "requirements"  (i18n "bn_l_requirements")
+  "ageCheck"      (i18n "bn_l_agecheck")
+  "enforcement"   (i18n "bn_l_enforcement")
+  "effective"     (i18n "bn_l_effective")
+  "history"       (i18n "bn_l_history")
+  "primary"       (i18n "bn_l_primary")
+  "reporting"     (i18n "bn_l_reporting")
+  "asOf"          (i18n "bn_l_asof")
+  "tracker"       (i18n "bn_l_tracker")
+  "correction"    (i18n "bn_l_correction")
+  "note"          (i18n "bn_l_note")
+  "untranslated"  (i18n "bn_untranslated")
+  "showing"       (i18n "bn_showing" 2)
+  "showingOne"    (i18n "bn_showing" 1)
+  "of"            (i18n "bn_of")
+  "empty"         (i18n "bn_empty")
+  "open"          (i18n "bn_open")
+  "citedFor"      (i18n "bn_l_citedfor")
+  "provenance"    (i18n "bn_provenance")
+  | jsonify | safeJS -}}
+{{- /* safeJS: Go's contextual autoescaping treats anything inside <script> as
+       JavaScript and would re-encode the jsonify output as a quoted JS string
+       literal, so JSON.parse would receive a string rather than an object.
+       The values come from the site's own i18n files. */ -}}
+</script>
