@@ -198,6 +198,69 @@ es el nombre del repositorio y el segundo es el proxy de OAuth de Netlify para e
 CMS — ninguno de los dos es el dominio del sitio, y tocarlos rompe el login del
 admin.
 
+
+### 11. Prohibiciones e incentivos: mapa de bloques
+El bloque (`layouts/partials/bans-nudges.html` + `static/data/bans-nudges.js` +
+`assets/css/components/bans-nudges.css`) tiene un treemap **debajo de los
+filtros**, entre la franja de distribución y la lista. Un control «Agrupar por»
+elige qué se cuenta, y son dos vistas distintas:
+
+- **Por jurisdicción** (la de entrada): regiones anidadas, **una celda por
+  instrumento**, color por estado. Es el mapa de dónde está cada norma; un clic
+  en una celda abre su ficha.
+- **Por región, tipo, mecanismo, estado u origen de la definición**: **un bloque
+  por categoría, sin celdas**. El área y el tono son la cantidad, y el bloque
+  lleva el nombre y el total. Un clic aplica esa categoría como filtro y otro
+  clic la saca. Cuenta, no lista.
+
+Las dos dibujan el mismo array `visible`, así que los filtros y la agrupación se
+combinan (Europa + agrupar por mecanismo = 5 bloques).
+
+- Las dimensiones están en `DIMENSIONS`: cada una dice cómo agrupar, cómo se
+  llama la categoría y qué `<select>` toca el clic. `tier` es la excepción:
+  muestra los cuatro tipos de fuente pero el filtro tiene dos valores, así que
+  `filterValue()` aplica el grupo (oficial / secundaria).
+- El color de las vistas agregadas es una **rampa de la paleta del sitio**:
+  crema `--base-bg` → amarillo `--cele-yellow` → ámbar quemado. Acá el color es
+  la cantidad, no una categoría. La excepción es agrupar por estado, que usa la
+  paleta semántica de siempre. Dos cosas decididas y no accidentales: el
+  amarillo va en 0,62 y no en el medio, porque repartido en partes iguales la
+  mitad de los bloques salían amarillo pleno y el mapa gritaba más que la
+  página; y la rampa se queda en la familia cálida a propósito, porque verde,
+  rojo y azul ya son estados en la franja que está justo arriba.
+- La tinta o el blanco de la etiqueta salen de la **luminancia** del paso, con
+  el corte en 0,25: es el punto donde las dos opciones empatan, o sea el mejor
+  piso de contraste posible en una rampa continua (3,5:1 en el peor paso, con
+  negrita y halo; 6:1 o más en todos los tamaños de bloque reales).
+- El reparto lo hace `squarify()` (Bruls, Huizing & van Wijk): sin él los
+  bloques salen como tiras. Las separaciones son huecos de superficie, no
+  bordes: un borde sobre un bloque de 8px se come el bloque.
+- **Las cajas tienen que ser `box-sizing: border-box`.** El script escribe el
+  rectángulo exacto en `width`/`height`; con content-box el padding de la
+  etiqueta la agranda 8px y el nombre se sale del bloque, encima del vecino.
+- Las etiquetas se **miden**, no se estiman (`fitLabel`): primero baja el cuerpo
+  hasta 9px, después saca la parte prescindible —el total en la vista anidada,
+  el nombre en las agregadas— y recién ahí rota. Dos trampas ya pisadas: hay que
+  mirar el desborde de los **hijos** del label, porque el nombre es un flex item
+  que se encoge y desborda adentro; y de esos hijos hay que mirar **sólo el
+  ancho**, porque el alto de una línea redondea para arriba y borraba etiquetas
+  enteras que entraban perfecto.
+- En la vista anidada la etiqueta se ancla en la celda más grande, no en el
+  centro: centrada sobre dos celdas, el hueco que las separa cruza el texto y
+  parece tachado.
+- El tooltip necesita `.bn-map__tip[hidden] { display: none; }`, porque
+  `display: grid` le gana a la regla del navegador para `[hidden]`.
+- **No tiene leyenda propia**: la clave de colores de la vista anidada y de la
+  de estados es la leyenda de la franja (`bn-strip-legend`), que queda justo
+  arriba y además trae los totales.
+- El reparto depende del ancho: hay un `ResizeObserver` que lo rehace. Al
+  probarlo desde la consola, ojo con que en una pestaña en segundo plano no
+  corren ni `requestAnimationFrame` ni el observer, y parece que estuviera roto;
+  y con que el LiveReload de `hugo server` puede recargar la página en medio de
+  un script y dar lecturas incoherentes.
+- `static/data/bans_nudges.json` lo genera `build_bans_nudges_site.py` en otro
+  proyecto: no editarlo a mano. El partial, el JS y el CSS sí son del sitio.
+
 ---
 
 ## Convenciones importantes

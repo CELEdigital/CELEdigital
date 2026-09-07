@@ -409,11 +409,6 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="http://localhost:1313/es/posts/seminario-cele-barata-lazar/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
                 href="http://localhost:1313/es/posts/tiktok-got-serious-una-nueva-forma-de-protesta/"
                 />
     <xhtml:link
@@ -2085,11 +2080,6 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="http://localhost:1313/es/posts/seminario-cele-barata-lazar/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
                 href="http://localhost:1313/es/posts/tiktok-got-serious-una-nueva-forma-de-protesta/"
                 />
     <xhtml:link
@@ -2381,6 +2371,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/en/autores/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/legislative-observatory/bans-and-nudges/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/observatorio-legislativo/prohibiciones-e-incentivos/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/legislative-observatory/bans-and-nudges/"
                 />
   </url><url>
     <loc>http://localhost:1313/en/categories/</loc>

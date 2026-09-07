@@ -380,6 +380,27 @@ other = "Show detail"
 [bn_strip_label]
 other = "Distribution of the current selection by status"
 
+[bn_map_title]
+other = "Instruments by {dim}"
+
+[bn_map_groupby]
+other = "Group by"
+
+[bn_map_by_jurisdiction]
+other = "Jurisdiction"
+
+[bn_map_by_tier]
+other = "Definition source"
+
+[bn_map_hint_items]
+other = "Each cell is one instrument, grouped by jurisdiction and region, and coloured by status. Clicking one opens its record."
+
+[bn_map_hint_groups]
+other = "Each block is one category: size and shade are how many instruments it holds. Clicking one filters by it."
+
+[bn_map_label]
+other = "Treemap: instruments by region, jurisdiction and status"
+
 [bn_nojs]
 other = "This page needs JavaScript to render the inventory. The full data is at"
 

@@ -92,6 +92,264 @@
   .bn-intro { grid-template-columns: 1fr; }
 }
 
+/* ── Mapa de bloques ──────────────────────────────────────────────── */
+/* Treemap de la selección: región → jurisdicción → instrumento. El área es
+   cantidad y el color es estado, con la misma paleta que el borde izquierdo de
+   las fichas y la franja de distribución, así que un bloque verde y una ficha
+   verde quieren decir lo mismo.
+
+   Los cuatro colores de estado son oscuros, de modo que la etiqueta va en
+   blanco y se lee igual cuando un bloque mezcla estados. Las separaciones son
+   huecos de superficie (el blanco del fondo), no bordes: un borde sobre un
+   bloque de 8px se come el bloque. */
+
+.bn-map {
+  margin: 1.4rem 0 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.bn-map__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.7rem;
+  align-items: baseline;
+  margin: 0;
+}
+
+.bn-map__title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+}
+
+.bn-map__hint {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--neutral-600);
+}
+
+/* ── Control «Agrupar por» ────────────────────────────────────────── */
+
+.bn-map__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.7rem;
+}
+
+.bn-map__group-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+}
+
+.bn-map__group-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.bn-map__group-set button {
+  font: inherit;
+  font-size: 0.85rem;
+  border: 1px solid var(--neutral-300);
+  background: #fff;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--neutral-800);
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.bn-map__group-set button:hover {
+  border-color: var(--cele);
+  color: var(--cele);
+}
+
+.bn-map__group-set button[aria-pressed='true'] {
+  background: var(--cele);
+  border-color: var(--cele);
+  color: #fff;
+}
+
+.bn-map__group-set button:focus-visible {
+  outline: 2px solid var(--cele);
+  outline-offset: 1px;
+}
+
+.bn-map__plot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1000 / 420;
+  min-height: 260px;
+  background: #fff;
+}
+
+.bn-map__empty {
+  margin: 0;
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--neutral-600);
+}
+
+/* El script escribe el rectángulo exacto en width/height: con content-box el
+   padding de la etiqueta lo agrandaba 8px y el nombre se salía del bloque. */
+.bn-tm__region,
+.bn-tm__jur,
+.bn-tm__cell,
+.bn-tm__block,
+.bn-tm__label { box-sizing: border-box; }
+
+.bn-tm__region,
+.bn-tm__jur { position: absolute; }
+
+.bn-tm__region-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 17px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--neutral-600);
+}
+
+.bn-tm__cell,
+.bn-tm__block {
+  position: absolute;
+  background: var(--bn-gone);
+  cursor: pointer;
+}
+
+.bn-tm__cell[data-tone='live'],
+.bn-tm__block[data-tone='live']      { background: var(--bn-live); }
+.bn-tm__cell[data-tone='contested'],
+.bn-tm__block[data-tone='contested'] { background: var(--bn-contested); }
+.bn-tm__cell[data-tone='pending'],
+.bn-tm__block[data-tone='pending']   { background: var(--bn-pending); }
+
+.bn-tm__cell:hover,
+.bn-tm__block:hover {
+  outline: 2px solid var(--text-dark);
+  outline-offset: -2px;
+  z-index: 3;
+}
+
+.bn-tm__label {
+  position: absolute;   /* el rectángulo lo pone el script */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  padding: 2px 4px;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.bn-tm__label--rot {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+
+.bn-tm__label i {
+  font-style: normal;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+/* En las vistas agregadas el número es el dato: va debajo del nombre y en
+   cuerpo mayor. Los tonos claros de la rampa piden tinta, no blanco. */
+.bn-tm__label--group {
+  flex-direction: column;
+  gap: 0.1em;
+}
+
+.bn-tm__label--group i {
+  font-size: 1.9em;
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* Sobre los pasos claros de la rampa la tinta gana; el halo claro hace el
+   trabajo que hace la sombra oscura sobre los pasos oscuros. */
+.bn-tm__block--light .bn-tm__label {
+  color: var(--text-dark);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.bn-map__tip {
+  position: absolute;
+  z-index: 5;
+  max-width: 22rem;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.45rem 0.6rem;
+  background: var(--text-dark);
+  color: #fff;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* display:grid le gana a la regla del navegador para [hidden]. */
+.bn-map__tip[hidden] { display: none; }
+
+.bn-map__tip b {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bn-map__tip-state {
+  justify-self: start;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  color: #fff;
+  background: var(--bn-gone);
+}
+
+.bn-map__tip-state[data-tone='live']      { background: var(--bn-live); }
+.bn-map__tip-state[data-tone='contested'] { background: var(--bn-contested); }
+.bn-map__tip-state[data-tone='pending']   { background: var(--bn-pending); }
+
+/* Al llegar desde un clic en el mapa, la ficha se señala sola un momento. */
+@keyframes bn-flash {
+  from { background: #f7e9e8; }
+  to   { background: #fff; }
+}
+
+.bn-card--flash { animation: bn-flash 1.6s ease-out; }
+
+@media (max-width: 700px) {
+  .bn-map__plot { aspect-ratio: 4 / 5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bn-card--flash { animation: none; }
+}
+
 /* ── Controls ─────────────────────────────────────────────────────── */
 
 .bn-controls {

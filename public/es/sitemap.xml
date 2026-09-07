@@ -373,7 +373,7 @@
     <loc>http://localhost:1313/es/taller/2013/</loc>
   </url><url>
     <loc>http://localhost:1313/es/posts/</loc>
-    <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -386,7 +386,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/</loc>
-    <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2026-08-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -396,55 +396,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/posts/seminario-cele-barata-lazar/</loc>
-    <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/posts/tiktok-got-serious-una-nueva-forma-de-protesta/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/posts/seminario-cele-barata-lazar/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/posts/tiktok-got-serious-una-nueva-forma-de-protesta/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/posts/seminario-cele-barata-lazar/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/tags/responsabilidad-de-intermediarios/</loc>
-    <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/responsabilidad-de-intermediarios/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/responsabilidad-de-intermediarios/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/tags/</loc>
-    <lastmod>2026-09-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/posts/brazil-intermediary-liability-decrees-2026/</loc>
@@ -552,6 +503,19 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/tags/slapp/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/posts/actores-privados-con-poder-cuasiestatal/</loc>
@@ -1811,6 +1775,19 @@
     <loc>http://localhost:1313/es/posts/el-liderazgo-esteril-de-brasil/</loc>
     <lastmod>2023-08-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/es/tags/responsabilidad-de-intermediarios/</loc>
+    <lastmod>2023-08-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/responsabilidad-de-intermediarios/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/responsabilidad-de-intermediarios/"
+                />
+  </url><url>
     <loc>http://localhost:1313/es/posts/el-cele-celebro-la-edicion-2023-de-su-taller-en-buenos-aires/</loc>
     <lastmod>2023-08-07T00:00:00+00:00</lastmod>
   </url><url>
@@ -2802,11 +2779,6 @@
     <lastmod>2020-07-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/posts/seminario-cele-barata-lazar/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/en/posts/seminario-cele-barata-lazar/"
                 />
@@ -3410,6 +3382,18 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/temas/plataformas/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/observatorio-legislativo/prohibiciones-e-incentivos/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/legislative-observatory/bans-and-nudges/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/observatorio-legislativo/prohibiciones-e-incentivos/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/region/</loc>

@@ -34,6 +34,7 @@
   </div>
 
   <div class="bans-nudges__interactive">
+
     <div class="bn-controls">
       <label class="bn-control bn-control--search">
         <span>{{ i18n "bn_search" }}</span>
@@ -80,6 +81,39 @@
       <ul class="bn-strip-legend" data-bn-legend></ul>
     </div>
 
+    {{- /* Mapa de bloques. El área de cada bloque es la cantidad de
+           instrumentos y el color es su estado; se redibuja con los mismos
+           filtros que la lista, y por eso va acá abajo: al cambiar un filtro
+           se lo ve moverse sin salir de la pantalla. La clave de colores es la
+           leyenda de la franja de arriba — no repetirla acá. El detalle se
+           arma en el cliente porque los registros llegan del JSON. */ -}}
+    {{- $groups := slice
+      (dict "key" "jurisdiction" "label" (i18n "bn_map_by_jurisdiction"))
+      (dict "key" "region"       "label" (i18n "bn_region"))
+      (dict "key" "quadrant"     "label" (i18n "bn_quadrant"))
+      (dict "key" "mechanism"    "label" (i18n "bn_mechanism"))
+      (dict "key" "status"       "label" (i18n "bn_status"))
+      (dict "key" "tier"         "label" (i18n "bn_map_by_tier")) -}}
+    <figure class="bn-map">
+      <figcaption class="bn-map__head">
+        <span class="bn-map__title" data-bn-map-title>{{ replace (i18n "bn_map_title") "{dim}" (lower (i18n "bn_map_by_jurisdiction")) }}</span>
+        <span class="bn-map__hint" data-bn-map-hint>{{ i18n "bn_map_hint_items" }}</span>
+      </figcaption>
+
+      <div class="bn-map__group">
+        <span class="bn-map__group-label" id="bn-groupby">{{ i18n "bn_map_groupby" }}</span>
+        <div class="bn-map__group-set" role="group" aria-labelledby="bn-groupby">
+          {{- range $i, $g := $groups }}
+          <button type="button" data-bn-group="{{ $g.key }}"
+                  aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $g.label }}</button>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="bn-map__plot" data-bn-treemap role="img"
+           aria-label="{{ i18n "bn_map_label" }}"></div>
+    </figure>
+
     <div class="bn-list" data-bn-list></div>
   </div>
 
@@ -123,6 +157,9 @@
   "open"          (i18n "bn_open")
   "citedFor"      (i18n "bn_l_citedfor")
   "provenance"    (i18n "bn_provenance")
+  "mapTitle"      (i18n "bn_map_title")
+  "mapHintItems"  (i18n "bn_map_hint_items")
+  "mapHintGroups" (i18n "bn_map_hint_groups")
   | jsonify | safeJS -}}
 {{- /* safeJS: Go's contextual autoescaping treats anything inside <script> as
        JavaScript and would re-encode the jsonify output as a quoted JS string

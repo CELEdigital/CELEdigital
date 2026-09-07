@@ -380,6 +380,27 @@ other = "Ver detalle"
 [bn_strip_label]
 other = "Distribución de la selección por estado"
 
+[bn_map_title]
+other = "Instrumentos por {dim}"
+
+[bn_map_groupby]
+other = "Agrupar por"
+
+[bn_map_by_jurisdiction]
+other = "Jurisdicción"
+
+[bn_map_by_tier]
+other = "Origen de la definición"
+
+[bn_map_hint_items]
+other = "Cada celda es un instrumento, agrupadas por jurisdicción y región, y el color es su estado. Al hacer clic en una se abre su ficha."
+
+[bn_map_hint_groups]
+other = "Cada bloque es una categoría: el tamaño y el tono son cuántos instrumentos tiene. Al hacer clic en uno se filtra por él."
+
+[bn_map_label]
+other = "Mapa de bloques: instrumentos por región, jurisdicción y estado"
+
 [bn_nojs]
 other = "Esta página necesita JavaScript para mostrar el inventario. Los datos completos están en"
 
