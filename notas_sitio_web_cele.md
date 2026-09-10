@@ -242,8 +242,23 @@ colecciones de boletines (ES y EN) y no aparecen en posts ni publicaciones.
 Las etiquetas son un desplegable con las 17: nadie puede inventar una nueva ni
 escribirla sin tilde.
 
-En el editor de texto hay tres bloques: «Resumen Observatorio», «Cronología del
-mes» y «Aviso». Se registran en `static/admin/index.html`.
+En el editor de texto hay siete bloques, todos registrados en
+`static/admin/index.html`. Tres son del boletín: «Resumen Observatorio»,
+«Cronología del mes» y «Aviso». Los otros cuatro son las visualizaciones de las
+páginas del Observatorio —«Gráfico del Observatorio» (`vega`), «Tabla del
+Observatorio» (`documentation`), «Tabla de normas de IA» (`documentation-ai`) y
+«Prohibiciones e incentivos» (`bans-nudges`)—, que están en la misma colección
+porque `lde.md`, `ia.md` y `prohibiciones-e-incentivos.md` viven en la carpeta
+de los boletines.
+
+En «Gráfico del Observatorio» **se elige el gráfico de una lista cerrada, no el
+archivo**. El `spec` y el `id` van juntos y el `id` no es decorativo:
+`vega-scripts.html` lo mira para saber a qué gráfico engancharle el panel de
+detalle (`chart-observatorio-sunburst`, `chart-ia-sunburst`) y el slider de años
+(`chart-observatorio-db`, `chart-ia-drilldown`). Con los dos campos sueltos, un
+`id` mal escrito publica un gráfico mudo. Por eso el patrón del bloque sólo
+reconoce los cinco specs publicados: un `{{< vega >}}` que apunte a otra cosa
+queda como texto en el Markdown y el editor no lo toca.
 
 ### Desde el documento de Drive
 

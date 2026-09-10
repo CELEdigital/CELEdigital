@@ -162,6 +162,21 @@ def limpiar(linea: str) -> str:
     return linea.rstrip()
 
 
+def sin_enfasis(texto: str) -> str:
+    """Saca la negrita/cursiva del texto de un encabezado.
+
+    Google Docs exporta los títulos con su formato adentro (`## **ARGENTINA**`),
+    así que el nombre del país nunca coincidía con la tabla `PAISES` y el script
+    cortaba diciendo que no había secciones de país.
+    """
+    texto = texto.strip()
+    while True:
+        m = re.fullmatch(r"(\*\*\*|\*\*|\*|___|__|_)(.+?)\1", texto, re.S)
+        if not m:
+            return texto.strip()
+        texto = m.group(2).strip()
+
+
 def partir_secciones(lineas: list[str]) -> tuple[list[str], list[tuple[str, list[str]]], list[str]]:
     """Devuelve (editorial, [(país, líneas)], seguimiento)."""
     editorial: list[str] = []
@@ -179,7 +194,7 @@ def partir_secciones(lineas: list[str]) -> tuple[list[str], list[tuple[str, list
         h3 = re.match(r"^###\s+(.*)$", linea)
 
         if h1:
-            titulo = plegar(h1.group(1))
+            titulo = plegar(sin_enfasis(h1.group(1)))
             # El primer H1 es el título del boletín; el siguiente abre las notas
             # internas y desde ahí no se publica nada más, salvo «Temas que
             # vienen creciendo», que se rescata aparte.
@@ -189,7 +204,7 @@ def partir_secciones(lineas: list[str]) -> tuple[list[str], list[tuple[str, list
             continue
 
         if h2:
-            nombre = h2.group(1).strip()
+            nombre = sin_enfasis(h2.group(1))
             clave = plegar(nombre).upper()
             clave_directa = nombre.strip().upper()
             if clave_directa in PAISES or clave.upper() in PAISES:
@@ -210,7 +225,7 @@ def partir_secciones(lineas: list[str]) -> tuple[list[str], list[tuple[str, list
 
         if modo == "editorial":
             if h3:
-                editorial.append(f"### {h3.group(1).strip()}")
+                editorial.append(f"### {sin_enfasis(h3.group(1))}")
             else:
                 editorial.append(linea)
         elif modo == "pais" and actual is not None:
